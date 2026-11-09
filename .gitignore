@@ -1,0 +1,11 @@
+*.exe
+*.obj
+*.ilk
+*.o
+*.json
+*.cbp
+*.layout
+*bin
+*obj
+*.pdb
+
