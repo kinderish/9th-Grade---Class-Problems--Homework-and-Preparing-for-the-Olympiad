@@ -25,15 +25,12 @@ ifstream fin("cadouri.in");
 ofstream fout("cadouri.out");
 
 int v[100001];
-int S[100001];
 
 int main(){
-    int numarCutii, C, nrCopiiCarePrimescCutii, i, minn = 2147483647, max1, max2 = 0;
+    int numarCutii, C, nrCopiiCarePrimescCutii, i, minn = 2147483647, s, maxx = 0;
     fin >> C;
     fin >> numarCutii;
-    fin >> v[1];
-    max1 = v[1]; 
-    for (int i = 2; i<=numarCutii; i++){
+    for (int i = 1; i<=numarCutii; i++){
         fin >> v[i];
         if (v[i]<minn){
             minn = v[i];
@@ -49,10 +46,16 @@ int main(){
             fout << nrCopiiCarePrimescCutii <<" "<< minn;
         }
     }else {
-        if (numarCutii %2 == 0){
-            fout << max1+max2 << " "<< 0;
+        for (i = 1; i<=numarCutii; i++){
+            s = v[i] + v[i+1];
+            if (s > maxx){
+                maxx = s;
+            }
+        }
+        if (numarCutii % 2 == 0){
+            fout << maxx << " " << 0;
         }else{
-            fout << max1+max2 << " " << minn;
+            fout << maxx << " " << minn;
         }
     }
     fin.close();
